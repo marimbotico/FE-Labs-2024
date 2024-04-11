@@ -58,9 +58,9 @@ of the elements on the page can help fix issues with spacing too, especially if 
 /* ---UNIVERSAL SELECTOR--- */
 /* OPTIONAL ↓ REMOVE COMMENTS TO SEE RED BORDER:*/
 
-* {
+/** {
   border: 1px solid red;
-}
+}*/
 
 /* ---ELEMENT SELECTORS--- */
 
@@ -69,10 +69,7 @@ html {
   background: linear-gradient(180deg, #84daf5, #89ffff, #affffa, #ffffff);
 }
 body { 
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    margin-left: 5rem;
-    margin-right: 5rem;
+    margin 1rem,
 }
 
 h1 {
@@ -114,6 +111,7 @@ footer {
 .banner-div {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 #banner-long {
   max-width: 100%;
