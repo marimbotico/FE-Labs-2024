@@ -121,6 +121,6 @@ console.log (" My name is: " + fullName);
 //	Print a line to the console that introduces the customer 
 //	including the name, and saying that they live at the address variable
 //  ↓ YOUR CODE HERE ↓
-console.log (" Hello! This is: " fullName + " and he lives at " + streetAddress);
+console.log (" Hello! This is: " + fullName + " and he lives at " + streetAddress);
 
     console.log('-----------Finished------------')
