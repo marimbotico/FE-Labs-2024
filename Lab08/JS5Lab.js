@@ -57,7 +57,9 @@ console.log(
  *
  * ↓ YOUR CODE HERE ↓ */
 // "On July 20th 1969, Niel Armstrong was the first person to set foot on the Earth's moon."
-
+console.log(
+  `On July 20th ${person.year}, ${person.firstname} ${person.lastname} was the first person to set foot on the Earth's moon.`
+)
 /*-------------------------------------------------------*/
 // Question 2: Instance of a Class
 console.log(`--------------------------
@@ -69,6 +71,7 @@ class Greeting {
     this.name = name
     this.place = place
   }
+  
 
   hello() {
     console.log(`Hello, ${this.name} from ${this.place}!`)
@@ -78,6 +81,7 @@ class Greeting {
 let greeting = new Greeting('Jennifer', 'NY')
 greeting.hello()
 
+
 /*
  * Using the provided code above:
  * Step 1: Create another instance of Greeting called myGreeting with your name and location as the arguments
@@ -85,7 +89,8 @@ greeting.hello()
  * Step 3: A greeting should print to the console
  *
  * ↓ YOUR CODE HERE ↓ */
-
+let myGreeting = new Greeting('Isaac Fernandez', 'Costa Rica')
+myGreeting.hello()
 /*-------------------------------------------------------*/
 // Question 3: myBook
 console.log(`--------------------------
@@ -114,7 +119,12 @@ class Book {
  * Step 7: Invoke the describe method for the yourBook instance. Make it print to the console also.
  *
  * ↓ YOUR CODE HERE ↓ */
-
+let myBook = new Book('Pride and Prejudice', 'Jane Austen')
+let yourBook = new Book('Don Quijote', 'Miguel de Cervantez')
+console.log(myBook.title)
+console.log(myBook.author)
+console.log(myBook.describe())
+console.log(yourBook.describe())
 /*-------------------------------------------------------*/
 // Question 4: Create a Class
 console.log(`--------------------------
@@ -129,7 +139,21 @@ Question 4: Create a Class \n`)
  *
  *
  * ↓ YOUR CODE HERE ↓ */
+class Fruit {
+  constructor(name, color, taste) {
+    this.name = name
+    this.color = color
+    this.taste = taste
+  }
+  describe() {
+    return `A ${this.name} is ${this.color} and has a ${this.taste} taste.`
+  }
+}
 
+let fruit1 = new Fruit('lime', 'green', 'sour');
+let fruit2 = new Fruit('banana', 'yellow', 'sweet');
+console.log(fruit1.describe());
+console.log(fruit2.describe());
 /*-------------------------------------------------------*/
 // Question 5: Inheritance and Polymorphism
 console.log(`--------------------------
@@ -173,7 +197,10 @@ class Teacher extends Person {
  * Step 4: Call the introduction method on your new teacher instance AND the details method, make sure that the results are printed to the console.
  *
  * ↓ YOUR CODE HERE ↓ */
-
+let student = new Student('Jacky','student')
+let teacher = new Teacher('Mr. Bean', 'teacher')
+console.log(student.introduction(), student.details())
+console.log(teacher.introduction(), teacher.details())
 /*-------------------------------------------------------*/
 // Question 6: Inheritance
 console.log(`--------------------------
@@ -194,12 +221,18 @@ class Parent {
 /*
  * Using the provided code above:
  * Step 1: Create a subclass called Child that inherits the name and age properties from the Parent super class.
- * Step 2: Create an instantance of the Child class called child with arguments "Pugsley" and 10
+ * Step 2: Create an instance of the Child class called child with arguments "Pugsley" and 10
  * Step 3: Invoke the details method using the new instance child.
  * HINT: You should be using vital key terms like extends and super
  *
  * ↓ YOUR CODE HERE ↓ */
-
+class Child extends Parent {
+  constructor(name, age) {
+  super (name, age)
+  }
+}
+let child = new Child('Pugsley', '10')
+child.details()
 /*-------------------------------------------------------*/
 // Question 7: Put it all together
 console.log(`--------------------------
@@ -209,14 +242,51 @@ Question 7: Put it all together \n`)
  * Step 1: Create a class called Movie with a constructor that takes in a title and director
  * Step 2: Create a method inside of Movie called "describe" that returns the following sentence (make sure to fill in the title and director programmatically): "The movie [movie name here] was directed by [director name here]."
  * Step 3: Create another class called List with a constructor that is an empty array called movies
- * Step 4: Create a method called addMovie inside of List that will recieve a movie as a parameter and add it to the movies array
+ * Step 4: Create a method called addMovie inside of List that will receive a movie as a parameter and add it to the movies array
  * Step 5: Create another method called displayMovies in the List class that will return all of the movie titles and directors using a for loop
  * Step 6: Create two instances of Movie called movie1, use "Jurassic Park" and "Steven Spielberg" as it's arguments AND movie2, use "How the Grinch stole Christmas" and "Ron Howard" as it's arguments
  * Step 7: Invoke the describe method on movie1, make sure it prints to the console
- * Step 8: Invoke the desrcibe method on movie2, make sure it prints to the console
+ * Step 8: Invoke the describe method on movie2, make sure it prints to the console
  * Step 9: Create an instance of List called list and add movie1 and movie2 to the movies array
  * Step 10: Display the movies information to the console, using the new instance list
  *
  * ↓ YOUR CODE HERE ↓ */
+class Movie {
+  constructor (title, director) {
+  this.tile = title
+  this.director = director
+}
+  describe() {
+    return `The movie ${this.tile} was directed by ${this.director}.`
+  }
+}
+
+class List {
+  constructor (){
+    this.movies = [];
+  }
+  addMovie(movie) {
+    this.movies.push(movie);
+  }
+  displayMovies() {
+    let movieString = " "
+    for (let i = 0; i < this.movies.length; i++) {
+    movieString += `${this.movies[i].title}, directed by ${this.movies[i].director}\n`
+      //this is how I learned from the videos we watched
+    //movieString += i + ') '+ this.movies[i].title + this.movies[i].director + '\n'   
+    } 
+    return(movieString)
+  }
+}
+
+let movie1 = new Movie("Jurassic Park", "Steven Spielberg")
+let movie2 = new Movie("How the Grinch stole Christmas", "Ron Howard")
+console.log(movie1.describe())
+console.log(movie2.describe())
+
+let list = new List;
+list.addMovie(movie1)
+list.addMovie(movie2)
+console.log(list.displayMovies());
 
 console.log(`-----------Finished------------`)
