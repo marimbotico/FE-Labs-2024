@@ -62,3 +62,161 @@ describe('JS6 Lab Tests:', () => {
   })
   /*--------------------------NEW TESTS BELOW-------------------------------*/
 })
+
+
+describe('Example Question 1a: Sorted Array of Numbers', () => {
+  it('#Should return the array of numbers in order', () => {
+    const arrayOfNumbers = [1, 5, 3, 2, 4]
+    arrayOfNumbers.sort((a, b) => a - b)
+
+    expect(arrayOfNumbers).to.deep.equal([1, 2, 3, 4, 5])// need the deep equal
+  })
+})
+
+describe('Example Question 1b: Adding and Subtracting money in my Wallet', () => {
+  it('#Should return the sum or subtraction of money in my wallet', () => {
+    let myWallet = new Wallet(10)
+    myWallet.addMoney(5)
+   expect(myWallet.money).to.equal(15)// first test adds 10+5
+
+  })
+
+  it('#Should return the sum or subtraction of money in my wallet', () => {
+    let myWallet = new Wallet(10)
+    myWallet.removeMoney(5)
+    expect(myWallet.money).to.equal(5)// second test removes 10-5
+    
+    myWallet.removeMoney(2.5)// it's 5 now and -2.5 = 2.5
+    expect(myWallet.money).to.equal(2.5)
+  })
+
+  class Wallet {
+    constructor(startingMoney) {
+      this.money = startingMoney
+    }
+
+    addMoney(amount) {
+      this.money += amount
+    }
+
+    removeMoney(amount) {
+      this.money -= amount
+    }
+  }
+
+})
+
+describe('Example Question 1c: Picking the days of the Week from a Switch Loop', () => {
+  it('#Should return the day of the week you select by a number', () => {
+    const dayOfTheWeek = (num) => {
+      switch (num) {
+        case 1:
+          return 'Monday'// added return and break to make it work
+          break;
+        case 2:
+          return 'Tuesday'
+          break;
+        case 3:
+          return 'Wednesday'
+          break;
+        case 4:
+         return 'Thursday'
+         break;
+        case 5:
+          return 'Friday'
+          break;
+        case 6:
+          return 'Saturday'
+          break;
+        case 7:
+          return 'Sunday'
+          break;
+        default:
+          console.log('Err. Something went wrong.')
+      }
+    }
+    expect(dayOfTheWeek(1)).to.equal('Monday')
+    expect(dayOfTheWeek(2)).to.equal('Tuesday')
+    expect(dayOfTheWeek(3)).to.equal('Wednesday')
+    expect(dayOfTheWeek(4)).to.equal('Thursday')
+    expect(dayOfTheWeek(5)).to.equal('Friday')
+    expect(dayOfTheWeek(6)).to.equal('Saturday')
+    expect(dayOfTheWeek(7)).to.equal('Sunday')
+  })
+})
+
+describe('Example Failed Days of the Week', () => {
+  it('#Should fail', () => {
+    const dayOfTheWeek = (num) => {
+      switch (num) {
+        case 1:
+          return 'Monday'// added return and break to make it work
+          break;
+        case 2:
+          return 'Tuesday'
+          break;
+        case 3:
+          return 'Wednesday'
+          break;
+        case 4:
+         return 'Thursday'
+         break;
+        case 5:
+          return 'Friday'
+          break;
+        case 6:
+          return 'Saturday'
+          break;
+        case 7:
+          return 'Sunday'
+          break;
+        default:
+          console.log('Err. Something went wrong.')
+      }
+    }
+    expect(dayOfTheWeek(1)).to.equal('wednesday')
+    expect(dayOfTheWeek(2)).to.equal('Monday')
+    expect(dayOfTheWeek(3)).to.equal('Wednebeansday')
+    expect(dayOfTheWeek(4)).to.equal('Thurseeeday')
+    expect(dayOfTheWeek(5)).to.equal('Fridwwway')
+    expect(dayOfTheWeek(6)).to.equal('Satuwwwrday')
+    expect(dayOfTheWeek(7)).to.equal('Suwwwnday')
+  })
+})
+
+describe('Example Question 1d: Only Wizards shall pass', () => {
+  it('#Should only pass Wizards', () => {
+    const movieCharacters = [
+      {
+        name: 'Howl',
+        isAWizard: true,
+        quote: `You're wearing that hat? After all the magic I used to make your dress pretty?`,
+      },
+      {
+        name: 'Kalcifer',
+        isAWizard: false,
+        quote: `I don't cook! I'm a scary and powerful fire demon!`,
+      },
+      {
+        name: 'Gandalf',
+        isAWizard: true,
+        quote: `You shall not pass!`,
+      },
+      {
+        name: 'Luke Skywalker',
+        isAWizard: false,
+        quote: `May the Force be with you.`,
+      },
+    ]
+  })
+    
+    function onlyWizards(arrayOfCharacters) {
+      return arrayOfCharacters.filter((character) => character.isAWizard == true)
+    }
+    
+    for (let character of onlyWizards(movieCharacters)) {
+      it('#Character should be a wizard' , () => {
+        expect(character.isAWizard).to.equal(true)
+      })
+    }
+})
