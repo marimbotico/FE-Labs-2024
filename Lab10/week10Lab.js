@@ -41,10 +41,33 @@ Part 1: Create a form with only JavaScript`)
            You should now have a label and a input on your website.
            Do the same steps, appending a label/input for Email, and a submit button to your form.
  * ↓ YOUR CODE HERE ↓ */
+let myForm = document.createElement('form');
+let myLabel = document.createElement('label');
+let myInput = document.createElement('input');
 
-// console.log(myForm)
+myLabel.innerHTML = 'Name';
+
+myForm.append(myLabel);
+myForm.append(myInput);
+
+document.body.append(myForm);
+
+
+let myEmailLabel = document.createElement('label');
+let myEmailInput = document.createElement('input');
+
+myEmailLabel.innerHTML = 'Email';
+myForm.append(myEmailLabel);
+myForm.append(myEmailInput);
+// document.body.append(myForm);
+
+let mySubmitButton = document.createElement('button');
+mySubmitButton.innerHTML = 'Submit';
+myForm.append(mySubmitButton);
+
+console.log(myForm)
 //Question: Besides changing the innerHTML, what other HTML things can we change using JavaScript?
-//Answer:
+//Answer: we could change or set attributes, styles, classes, add Events, etc
 
 /*------------------------ Styling a form with only JavaScript------------------------*/
 console.log(`-------------------------- 
@@ -60,8 +83,16 @@ Part 2: Styling our form with only JavaScript`)
  *
  * ↓ YOUR CODE HERE ↓ */
 
+myForm.style.backgroundColor = 'green';
+myForm.style.color = 'white';
+myForm.style.display = 'flex'
+myForm.style.flexDirection = 'column'
+myForm.style.maxWidth = '250px'
+
+
 //Question: Do you prefer styling with JavaScript or CSS?
-//Answer:
+//Answer: I think it depends how specific you want to be and how many things you need to adjust. If it is simple I
+// would use javascript but otherwise I would probably style it in CSS.
 
 /*------------------------ Creating a table with only JavaScript ------------------------*/
 console.log(`-------------------------- 
@@ -79,11 +110,34 @@ Part 3: Creating a table with only JavaScript`)
 
  * Final Step: Style your table using JavaScript starting with a border. You may need to target more element/nodes than we did with myTable.
  * ↓ YOUR CODE HERE ↓ */
+let myTable = document.createElement('table');
+let myRow = document.createElement('tr')
+let myName = document.createElement('td')
+let myEmail = document.createElement('td')
 
-// console.log(myTable)
+myName.innerHTML = 'Name'
+myEmail.innerHTML = 'Email'
+
+myTable.appendChild(myRow);
+myTable.appendChild(myName);
+myTable.appendChild(myEmail);
+
+document.body.append(myTable);
+
+myTable.style.border = '1px solid black';
+myTable.style.borderCollapse = 'collapse';  // Ensure borders do not double
+myTable.style.width = '250px';  // Optional: Set table width
+myTable.style.backgroundColor = 'purple'
+myTable.style.borderBlockColor = 'red'
+myTable.style.color = 'white'
+
+
+
+console.log(myTable)
 //Question: While this is clearly a more round-about way of making a table, how can using JavaScript in this way
 //          more beneficial than HTML?
-//Answer:
+//Answer: I would make the structure in html since it's easier with tags and ids and do all the modifications I would
+//like in javascript such as eventListeners, animations, attributes, styles and such.
 
 /*------------------------ Changing our body background on click ------------------------*/
 console.log(`-------------------------- 
@@ -103,10 +157,15 @@ Part 4: Changing our background on click`)
  * Step 7: Click the button in your index.html and see the background change!
  *
  * ↓ YOUR CODE HERE ↓ */
+const myButton = document.getElementById('myButton');
+myButton.addEventListener('click', () => {
+   document.body.style.backgroundColor = `rgb(${Math.random() * 225}, ${Math.random() * 225}, ${Math.random() * 225})`;
+   //document.body.style.backgroundColor = 'rgb(0,125,255)';
+});
 
 //Question: What other event listeners are there?
 //             Try them out by replacing 'click' in your function above!
-//Answer:
+//Answer: mousemove, mouseover, keydown, keypress, focus, input, blur, load, scroll
 
 console.log(`-----------Finished------------`)
 
