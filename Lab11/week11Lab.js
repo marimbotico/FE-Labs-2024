@@ -23,6 +23,8 @@
  * Calling methods of an instantiated class 
 */
 
+// const {ajaxSetup} = require("jquery");
+
 /* ----------------------------------------------- */
 // Please do not alter the existing code unless instructed to do so. 
 // Read the comments and add your code where it is specified for each question. 
@@ -37,9 +39,15 @@
 	* Step 3: In the "replaceTextInDiv" function, after replacing the text in the DIV make sure to clear out the input value.
 	* 
 	* ↓ YOUR CODE HERE ↓ */
+let div = $('.put-here');// defining div class
+let input = $('#input-value');// defining div id
 
-
-
+function replaceTextInDiv() {// function that will replace the text in the div
+	let newText = input.val();
+	div.text(newText);// this will replace the current text with the new input value
+	input.val('');// this clears out the input value
+}
+console.log($('#input-value').val());
 
 
 
@@ -58,7 +66,8 @@
 	* ↓ YOUR CODE HERE ↓ */
 
 
-	
+$('.dog').before("<div><img src='images/fish.png' width='200'></div>");//I use .before to insert the div before the dog image
+$('.dog').after("<div><img src='images/cat.png' width='200'></div>");// the same but .after
 
 
 
@@ -75,7 +84,7 @@
 	*
 	* ↓ YOUR CODE HERE ↓ */
 
-
+$('#lorem2').remove();//target the second paragraph by ID and then .remove()
 
 
 	
@@ -90,7 +99,7 @@
 // As an option, the url can be saved in a variable as a STRING as shown.
 let CATS_API_URL = 'https://catfact.ninja/fact'; 
 
-//This is how to make a GET call using AJAX:
+// //This is how to make a GET call using AJAX:
 $.get(CATS_API_URL, (data)=> {
     console.log(data);
     $('.cat-facts').append(`<p> ${data.fact} </p>`);
@@ -110,7 +119,12 @@ $.get(CATS_API_URL, (data)=> {
  	* 
  	* ↓ YOUR CODE HERE ↓ */
 
-
+	 let randomJoke = 'https://official-joke-api.appspot.com/random_joke';
+	 $.get(randomJoke, (data) => {
+		 console.log(data);
+	 $('.jokes').prepend(`<p> ${data.setup} </p>`);// .prepend and template literal to acquire ${data.setup} same applies for below
+	 $('.jokes').append(`<p>  ${data.punchline} </p>`);
+	 });
 
 
 
@@ -121,7 +135,9 @@ $.get(CATS_API_URL, (data)=> {
 
 // Question 5: Fake API 
 
-/* We are going to use a JSON Server as a fake API. APIs in general will be covered throughout the rest of this course. This is a way to practice making calls to an API without worrying about authentication and Keys which are usually required for using an API. In order to complete this lab you will have to do some extra installations. The db.json file for the json-server is already included with this lab.
+/* We are going to use a JSON Server as a fake API. APIs in general will be covered throughout the rest of this course. This is a way to practice making calls to an API 
+without worrying about authentication and Keys which are usually required for using an API. In order to complete this lab you will have to do some extra installations. 
+The db.json file for the json-server is already included with this lab.
 	* Step 1: In the terminal, change into this files directory and run the following commands:
 
 		METHOD #1
@@ -166,12 +182,23 @@ $.get(CATS_API_URL, (data)=> {
 	* 
 	*
 	* ↓ YOUR CODE HERE ↓ */
+let list = 'http://localhost:3000/gradebook'
+$.get(list, (data) => {
+	console.log(data);
+});
 
 
-	
+let seven = 'http://localhost:3000/gradebook/7'
+$.get(seven, (data) => {
+	console.log(data);
+	$('.result').append(data.firstname + " " + data.lastname + ", Grade: "  + data.grade + "%");
+});	
 
-
-
+let two = 'http://localhost:3000/gradebook/2'
+$.get(two, (data) => {
+	console.log(data);
+	$('.new').append(data.firstname + " " + data.lastname + ", Grade: "  + data.grade + "%");
+});	
 
 
 
@@ -179,7 +206,7 @@ $.get(CATS_API_URL, (data)=> {
 // Question 6: POST 
 
 //EXAMPLE:
-//The function below is triggered by a click event on the BUTTON element with a class name of "test". It will POST (or add) the the values from the inputs to the db.json file. With the HTML file open in the browser and the db.json file open in your IDE, click on the TEST BUTTON to witness the post being added to the data object. Note: the data id will be assigned automatically.  
+//The function below is triggered by a click event on the BUTTON element with a class name of "test". It will POST (or add) the values from the inputs to the db.json file. With the HTML file open in the browser and the db.json file open in your IDE, click on the TEST BUTTON to witness the post being added to the data object. Note: the data id will be assigned automatically.  
 
 $(".test").on("click", function(){
 	
@@ -204,7 +231,21 @@ $(".test").on("click", function(){
 	*
 	* ↓ YOUR CODE HERE ↓ */
 
-
+	$(".postBtn").on("click", function(){
+	
+		let fname = $('#firstname').val();
+		let lname = $('#lastname').val();
+		let grade = $('#grade').val();
+		
+		$.post("http://localhost:3000/gradebook", 
+				{ 
+						"firstname": fname,
+						"lastname": lname,
+						"grade": grade    
+				}
+		);
+	
+	});
 
 
 
