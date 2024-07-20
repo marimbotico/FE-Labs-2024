@@ -1,0 +1,47 @@
+.navBar {
+    width: 100vw;
+    background-color: rgb(10, 76, 192);
+    color: antiquewhite;
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding: 5px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+
+nav ul li{
+    list-style-type: none;
+    margin-right: 1rem;
+}
+
+nav ul li:hover {
+    color: rgb(46, 207, 38);
+ 
+}
+
+nav ul li:active {
+    background-color: rgb(13, 169, 226);
+}
+
+.Welcoming {
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    background-color: rgb(15, 171, 206);
+    font-size: 60px;
+    text-transform: uppercase;
+    font-stretch: extra-expanded;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+p {
+    font-size: 30px;
+    font-style: italic;
+
+}
