@@ -115,17 +115,39 @@
  */
 
 /* -- ALL YOUR COMPONENT/STYLE IMPORTS HERE -- */
-import './App.css'
-import Nav from './Nav'
+import './App.css';
+import Nav from './Nav';
+import Appointments from './Appointments';
+import {useState} from 'react';
 
-let date = new Date()
+let allCustomers = [
+  {
+    firstName: 'Shawn',
+    lastName: 'Lennon',
+    appointmentTime: '1:00PM',
+  },
+  {
+    firstName: 'Jewel',
+    lastName: 'Ronnie',
+    appointmentTime: '2:00PM',
+  },
+  {
+    firstName: 'Martie',
+    lastName: 'Francis',
+    appointmentTime: '3:00PM',
+  },
+];
+
+let date = new Date();
 
 let singleUser = {
   name: 'Jane Smith',
   todaysDate: date.toDateString(),
-}
+};
 
 function App() {
+  const [customers, setCustomers] = useState(allCustomers);
+
   return (
     <div className="App">
       <Nav />
@@ -133,8 +155,12 @@ function App() {
         <h1>Welcome, {singleUser.name}</h1>
         <p>Todays date is: {singleUser.todaysDate}</p>
       </section>
+    <section className='appointmentSection'>
+  <Appointments customers={customers} /> {/* Passing allCustomers as a prop */}
+    </section>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
+

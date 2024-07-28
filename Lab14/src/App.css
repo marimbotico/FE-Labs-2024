@@ -35,6 +35,26 @@
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
-  background-color: #eeeeee;
+  background-color: #ef5f5f;
   padding: 1em;
+}
+
+.appointmentTable {
+  border: 3px double rgb(72, 4, 84);
+  background-color: #ead6d6;
+  margin: 15px auto;
+  padding: 1rem;
+  color: rgb(4, 0, 3);
+}
+
+.appointmentTable th {
+  font-size: 20px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.appointmentTable td {
+ padding: 10px;
+ text-align:justify;
+ text-transform: uppercase;
+ text-shadow: 2rem;
 }
