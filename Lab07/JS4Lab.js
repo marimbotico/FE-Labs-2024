@@ -126,7 +126,15 @@ Question 4: Callbacks`)
  *
  * ↓ YOUR CODE HERE ↓ */
 let foodForTodayAndTomorrow = (tomorrowsFoodChoice, tomorrowsDrinkChoice, callbackFunction) => {
-   return `${callbackFunction}. Tomorrow we want ${tomorrowsFoodChoice} and ${tomorrowsDrinkChoice}.`
+   return `${callbackFunction()}. Tomorrow we want ${tomorrowsFoodChoice} and ${tomorrowsDrinkChoice}.`;
 }
-console.log(foodForTodayAndTomorrow('Sushi', 'Green Tea', (lunchTime('Pizza','Water'))));
+
+// Define a function that returns today's food and drink
+let lunchTime = (todaysFood, todaysDrink) => {
+   return `Today we are having ${todaysFood} and ${todaysDrink}`;
+}
+
+// Pass a function reference using an arrow function
+console.log(foodForTodayAndTomorrow('Sushi', 'Green Tea', () => lunchTime('Pizza', 'Water')));
+
 console.log(`-----------Finished------------`)
